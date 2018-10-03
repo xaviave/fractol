@@ -6,18 +6,17 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/02/01 15:38:34 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/01 17:10:05 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/03 17:55:05 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#ifndef _FDF_H
-# define _FDF_H
+#ifndef _FRACTOL_H
+# define _FRACTOL_H
 
 # include "../minilibx_macos/mlx.h"
 # include "../libft/header/libft.h"
 # include <math.h>
-
 
 /*
 ** functions
@@ -55,13 +54,28 @@ typedef struct		s_mem
 	void			*mlx_ptr;
 	int				map;
 	int				off;
-	int				test_x;
-	int				test_y;
-	int				size;
+	double			zoom;
+	double			x;
+	double			y;
+	unsigned int	max_iter;
 }					t_mem;
 
 void				menu(t_mem *mem);
+void				loop(t_mem *mem);
+void				choose_frac(t_mem *mem);
 
+void				ft_create_img(t_mem *mem);
+void				ft_fill_image(t_mem *mem);
+void				ft_put_pixel(t_mem *mem, t_color color, int x, int y);
+
+int					ft_key(int key, t_mem *mem);
+int					mouse_move_hook(int x, int y, t_mem *mem);
+int					mouse_click_hook(int k, int x, int y, t_mem *mem);
+int					loop_hook(t_mem *mem);
+
+void				julia(t_mem *mem);
+void				mandelbrot(t_mem *mem);
+void				burningship(t_mem *mem);
 
 /*
 ** keyboard touch value
@@ -122,5 +136,6 @@ void				menu(t_mem *mem);
 # define TOUCH_NUMPAD_PAGEUP 116
 # define TOUCH_NUMPAD_PAGEDOWN 121
 # define TOUCH_NUMPAD_HOME 115
+# define OPTION 1L<<6
 
 #endif

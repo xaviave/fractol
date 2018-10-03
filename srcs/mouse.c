@@ -1,44 +1,38 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   mouse.c                                          .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/01 10:58:23 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/02 11:45:20 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 11:26:51 by xamartin     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/03 17:56:12 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int			usage(void)
+int			mouse_move_hook(int x, int y, t_mem *mem)
 {
-	ft_printf("Usage : ./fractol [ map ]\n\n");
-	ft_printf("map = [ Julia / Mandelbrot / Burning ship ]\n");
+	if (x < 0 || x >= mem->win.width || y < 0 || y >= mem->win.height)
+		return (0);
+	mem->color.r += x / y % 255;
+	mem->color.b += x * y % 255;
+	mem->color.g += x + y % 255;
+	loop(mem);
 	return (0);
 }
 
-int			choose_fractale(t_mem *mem, char *av)
+int			mouse_click_hook(int k, int x, int y, t_mem *mem)
 {
-	if (!ft_strcmp("Julia", av))
-		mem->map = 1;
-	else if (!ft_strcmp("Burning ship", av))
-		mem->map = 2;
-	else if (!ft_strcmp("mandelbrot", av))
-		mem->map = 3;
-	else
-		return (usage());
-	return (1);
-}
-
-int			main(int ac, char **av)
-{
-	t_mem	mem;
-
-	if (!choose_fractale(&mem, av[ac - 1]))
-		return (0);
-	menu(&mem);
-	return (1);
+	x = y;
+	if (k == 4)
+		mem->zoom += 0.1;
+	if (k == 5 && mem->zoom > 0.1)
+		mem->zoom -= 0.1;
+	loop(mem);
+	//if (mem)
+	//;
+	return (0);
 }

@@ -6,7 +6,7 @@
 #    By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/03/05 18:53:52 by wgaetan      #+#   ##    ##    #+#        #
-#    Updated: 2018/10/01 17:11:22 by xamartin    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/02 13:04:14 by xamartin    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -25,8 +25,16 @@ EXT_LIBS = -framework OpenGl -framework AppKit
 
 #PATH
 
-SRCS = srcs/main.c \
-	   srcs/menu.c \
+SRCS = srcs/main.c\
+	   srcs/menu.c\
+	   srcs/key.c\
+	   srcs/img.c\
+	   srcs/mouse.c\
+	   srcs/hook.c\
+	   srcs/julia.c\
+	   srcs/mandelbrot.c\
+	   srcs/burningship.c\
+	
 
 OBJS = $(SRCS:.c=.o)
 

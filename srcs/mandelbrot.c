@@ -1,44 +1,20 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   main.c                                           .::    .:/ .      .::   */
+/*   mandelbrot.c                                     .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/01 10:58:23 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/02 11:45:20 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/02 12:58:04 by xamartin     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/02 18:13:58 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int			usage(void)
+void	mandelbrot(t_mem *mem)
 {
-	ft_printf("Usage : ./fractol [ map ]\n\n");
-	ft_printf("map = [ Julia / Mandelbrot / Burning ship ]\n");
-	return (0);
-}
-
-int			choose_fractale(t_mem *mem, char *av)
-{
-	if (!ft_strcmp("Julia", av))
-		mem->map = 1;
-	else if (!ft_strcmp("Burning ship", av))
-		mem->map = 2;
-	else if (!ft_strcmp("mandelbrot", av))
-		mem->map = 3;
-	else
-		return (usage());
-	return (1);
-}
-
-int			main(int ac, char **av)
-{
-	t_mem	mem;
-
-	if (!choose_fractale(&mem, av[ac - 1]))
-		return (0);
-	menu(&mem);
-	return (1);
+if (mem)
+	;
 }
