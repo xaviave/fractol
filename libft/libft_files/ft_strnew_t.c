@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   color.c                                          .::    .:/ .      .::   */
+/*   ft_strnew.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
-/*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
+/*   By: tduverge <marvin@le-101.fr>                +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/09 13:23:13 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/10 17:42:33 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/04/26 11:28:42 by tduverge     #+#   ##    ##    #+#       */
+/*   Updated: 2018/04/26 11:28:42 by tduverge    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
-#include "../include/fractol.h"
+#include "../header/libft.h"
 
-t_color				get_color(int a, t_mem *mem)
+char	*ft_strnew(size_t size)
 {
-	t_color			color;
+	char *s;
 
-	if (a == mem->max_iter)
-		return (mem->black);
-	color.r = (a * 5 + 30) + mem->color.i % 255;
-	color.g = (255 - (a * 10 + 150)) + mem->color.i % 255;
-	color.b = (255 - (a * 2 + 45)) + mem->color.i % 255;
-	return (color);
+	if (!(s = ft_memalloc(size + 1)))
+		return (NULL);
+	return (s);
 }

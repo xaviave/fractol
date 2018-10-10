@@ -6,7 +6,7 @@
 #    By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/09 17:54:27 by xamartin     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/09 18:50:12 by xamartin    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/10/10 18:33:41 by xamartin    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -15,53 +15,58 @@
 
 #COMPILATION
 
+CC = gcc
+LIBFT = libft/
+MINILIBX = minilibx_macos/libmlx.a
 NAME = fractol
-HEADERS = includes/fractol.h
-FLAGS = -Wall -Wextra -Werror -g
-CC = gcc -O3
-INC = -I minilibx_macos -I libft
-LIBS = minilibx_macos/libmlx.a libft/libft.a
-EXT_LIBS = -framework OpenGl -framework AppKit
+INC = includes/fractol.h
+LIB_FLAG = -framework OpenGl -framework AppKit
+CFLAGS = -Wall -Wextra -Werror -O3
 
 
 #PATH
 
-SRCS = srcs/main.c\
-	   srcs/init.c\
-	   srcs/key.c\
-	   srcs/img.c\
-	   srcs/mouse.c\
-	   srcs/move.c\
-	   srcs/color.c\
-	   srcs/julia.c\
-	   srcs/mandelbrot.c\
-	   srcs/burningship.c\
+SRCS_PATH = ./srcs/
+OBJS_PATH = ./srcs/
 
-OBJS = $(SRCS:.c=.o)
+FILES = main.c\
+	    init.c\
+	    key_hook.c\
+	    img.c\
+	    mouse_hook.c\
+	    zoom_hook.c\
+	    color.c\
+	    julia.c\
+	    mandelbrot.c\
+	    burningship.c\
+
+
+SRCS = $(addprefix $(SRCS_PATH), $(FILES))
+OBJS = $(addprefix $(OBJS_PATH), $(FILES:.c=.o))
 
 
 #RULES
 
 all: $(NAME)
 
-$(NAME): $(LIBS) $(OBJS)
-	@$(CC) $(FLAGS) $(LIBS) $(EXT_LIBS) $(OBJS) -o $(NAME)
+$(NAME): $(OBJS)
+	make -C $(LIBFT)
+	make -C minilibx_macos
+	$(CC) $(CFLAGS) $(LIB_FLAG) -o $@ $(OBJS) $(MINILIBX) -L $(LIBFT) -lft
 
-$(LIBS):
-	@make -C ./libft
-	@make -C ./minilibx_macos
 
-./%.o: ./%.c $(HEADERS)
-	@$(CC) $(FLAGS) $(INC) -o $@ -c $<
+$(OBJS_PATH)%.o: $(SRCS_PATH)%.c $(INC)
+	$(CC) $(CFLAGS) -o $@ -c $<
+
 
 clean:
+	@make -C $(LIBFT) clean
+	@make -C minilibx_macos clean
 	@rm -f $(OBJS)
-	@make -C ./libft clean
-	@make -C ./minilibx_macos clean
 
 fclean: clean
+	@rm -f libft/libft.a
+	@rm -f minilibx_macos/libmlx.a
 	@rm -f $(NAME)
-	@rm -f ./libft/libft.a
-	@rm -f ./minilibx_macos/libmlx.a
 
 re: fclean all

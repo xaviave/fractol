@@ -6,7 +6,7 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 13:14:05 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:49:48 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:23:36 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -33,10 +33,13 @@ static int	burningship_iter(t_mem *mem)
 
 void		burningship(t_mem *mem)
 {
-	intmax_t	x;
-	intmax_t	y;
+	long	x;
+	long	y;
 
 	x = mem->x;
+	mlx_destroy_image(mem->mlx_ptr, mem->img.ptr);
+	ft_create_img(mem);
+	ft_fill_image(mem);
 	while (++x < mem->win.width + mem->x)
 	{
 		y = mem->y;
@@ -44,8 +47,8 @@ void		burningship(t_mem *mem)
 		{
 			mem->frac->zr = 0;
 			mem->frac->zi = 0;
-			mem->frac->cr = (long double)x / mem->z + mem->frac->x1;
-			mem->frac->ci = (long double)y / mem->z + mem->frac->y1;
+			mem->frac->cr = (double)x / mem->z + mem->frac->x1;
+			mem->frac->ci = (double)y / mem->z + mem->frac->y1;
 			ft_put_pixel(mem, x - mem->x, y - mem->y,
 				get_color(burningship_iter(mem), mem));
 		}

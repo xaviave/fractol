@@ -1,26 +1,34 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   color.c                                          .::    .:/ .      .::   */
+/*   move_hook.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
-/*   Created: 2018/10/09 13:23:13 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/10 17:42:33 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Created: 2018/10/09 13:17:06 by xamartin     #+#   ##    ##    #+#       */
+/*   Updated: 2018/10/10 18:32:55 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
 
 #include "../include/fractol.h"
 
-t_color				get_color(int a, t_mem *mem)
+void	zoom_in(t_mem *mem)
 {
-	t_color			color;
+	mem->x += mem->win.width / 12;
+	mem->y += mem->win.height / 12;
+	mem->z = mem->z * 1.2;
+	mem->x = mem->x * 1.2;
+	mem->y = mem->y * 1.2;
+}
 
-	if (a == mem->max_iter)
-		return (mem->black);
-	color.r = (a * 5 + 30) + mem->color.i % 255;
-	color.g = (255 - (a * 10 + 150)) + mem->color.i % 255;
-	color.b = (255 - (a * 2 + 45)) + mem->color.i % 255;
-	return (color);
+void	zoom_out(t_mem *mem)
+{
+	if (mem->z / 1.2 < 10)
+		return ;
+	mem->x -= mem->win.width / 12;
+	mem->y -= mem->win.height / 12;
+	mem->z = mem->z / 1.2;
+	mem->x = mem->x / 1.2;
+	mem->y = mem->y / 1.2;
 }

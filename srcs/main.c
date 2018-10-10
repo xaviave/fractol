@@ -6,7 +6,7 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2016/03/14 20:09:39 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:49:49 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:29:59 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -50,13 +50,14 @@ static int	cross_close(t_mem *mem)
 
 static void	fractol(t_mem *mem)
 {
-	mem->win.win_ptr = mlx_new_window(mem->mlx_ptr, mem->win.width, mem->win.height,
-			"Fractol du swag");
-	mlx_key_hook(mem->win.win_ptr, key_hook, mem);
-	mlx_hook(mem->win.win_ptr, 17, 0L, cross_close, mem);
-	mlx_hook(mem->win.win_ptr, MOTION_NOTIFY, PTR_MOTION_MASK, mouse_move_hook, mem);
-	mlx_mouse_hook(mem->win.win_ptr, mouse_click_hook, mem);
+	mem->win.win_ptr = mlx_new_window(mem->mlx_ptr, mem->win.width,
+			mem->win.height, "Fractol du swag");
 	mem->fractal(mem);
+	mlx_hook(mem->win.win_ptr, 17, 0L, cross_close, mem);
+	mlx_hook(mem->win.win_ptr, MOTION_NOTIFY, PTR_MOTION_MASK,
+			mouse_move_hook, mem);
+	mlx_mouse_hook(mem->win.win_ptr, mouse_click_hook, mem);
+	mlx_key_hook(mem->win.win_ptr, key_hook, mem);
 	mlx_loop(mem->mlx_ptr);
 }
 

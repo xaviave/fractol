@@ -6,7 +6,7 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 13:22:14 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:49:47 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:30:17 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -15,12 +15,13 @@
 
 void				free_all(t_mem *mem)
 {
+	mlx_destroy_window(mem->mlx_ptr, mem->win.win_ptr);
 	free(mem->frac);
 }
 
 static t_frac		*init_frac(void)
 {
-	t_frac	*frac;
+	t_frac			*frac;
 
 	if (!(frac = (t_frac *)malloc(sizeof(t_frac))))
 		return (NULL);
@@ -36,8 +37,13 @@ static t_frac		*init_frac(void)
 	return (frac);
 }
 
-void			init(t_mem *mem)
+void				init(t_mem *mem)
 {
+	mem->color.r = 130;
+	mem->color.g = 35;
+	mem->color.b = 235;
+	mem->color.a = 0;
+	mem->color.i = 0;
 	mem->win.width = WIDTH;
 	mem->win.height = HEIGHT;
 	mem->x = -WIDTH / 3;

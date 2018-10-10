@@ -6,7 +6,7 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 18:01:27 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:17:40 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:31:15 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -19,7 +19,7 @@
 # include <math.h>
 
 # define WIDTH 1800
-# define HEIGHT 1200 
+# define HEIGHT 1200
 
 /*
 ** functions
@@ -78,12 +78,12 @@ typedef struct		s_mem
 	int				option_y;
 	int				mouse_stop;
 	void			(*fractal)();
-	unsigned int	max_iter;
+	int				max_iter;
 	t_frac			*frac;
 }					t_mem;
 
-
 void				ft_create_img(t_mem *mem);
+void				ft_fill_image(t_mem *mem);
 void				ft_put_pixel(t_mem *mem, int x, int y, t_color color);
 t_color				get_color(int a, t_mem *mem);
 

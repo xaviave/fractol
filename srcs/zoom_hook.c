@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   move.c                                           .::    .:/ .      .::   */
+/*   zoom_hook.c                                      .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 13:17:06 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:16:52 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:32:56 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -20,6 +20,7 @@ void	zoom_in(t_mem *mem)
 	mem->z = mem->z * 1.2;
 	mem->x = mem->x * 1.2;
 	mem->y = mem->y * 1.2;
+	mem->fractal(mem);
 }
 
 void	zoom_out(t_mem *mem)
@@ -31,4 +32,5 @@ void	zoom_out(t_mem *mem)
 	mem->z = mem->z / 1.2;
 	mem->x = mem->x / 1.2;
 	mem->y = mem->y / 1.2;
+	mem->fractal(mem);
 }

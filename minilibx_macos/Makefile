@@ -3,25 +3,19 @@
 #                                                               /              #
 #    Makefile                                         .::    .:/ .      .::    #
 #                                                  +:+:+   +:    +:  +:+:+     #
-#    By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+      #
+#    By: xamartin <marvin@le-101.fr>                +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/02/01 16:25:39 by xamartin     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/09 15:40:03 by xamartin    ###    #+. /#+    ###.fr      #
+#    Updated: 2018/02/01 16:25:44 by xamartin    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
 
 NOM=libmlx.a
-SRC= mlx_shaders.c\
-	 mlx_new_window.m\
-	 mlx_init_loop.m\
-	 mlx_new_image.m\
-	 mlx_xpm.c\
-	 mlx_int_str_to_wordtab.c\
-
+SRC= mlx_shaders.c mlx_new_window.m mlx_init_loop.m mlx_new_image.m mlx_xpm.c mlx_int_str_to_wordtab.c
 OBJ1=$(SRC:.c=.o)
 OBJ=$(OBJ1:.m=.o)
-CFLAGS+=-O3
+CFLAGS+=-O2
 
 all: $(NOM)
 

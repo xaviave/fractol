@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                          LE - /            */
 /*                                                              /             */
-/*   key.c                                            .::    .:/ .      .::   */
+/*   key_hook.c                                       .::    .:/ .      .::   */
 /*                                                 +:+:+   +:    +:  +:+:+    */
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/08 15:28:23 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/09 18:17:34 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/10 18:34:23 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -16,13 +16,25 @@
 static void	key_move(int k, t_mem *mem)
 {
 	if (k == TOUCH_UP)
+	{
 		mem->y += 100;
+		mem->fractal(mem);
+	}
 	if (k == TOUCH_DOWN)
+	{
 		mem->y -= 100;
+		mem->fractal(mem);
+	}
 	if (k == TOUCH_LEFT)
+	{
 		mem->x += 100;
+		mem->fractal(mem);
+	}
 	if (k == TOUCH_RIGHT)
+	{
 		mem->x -= 100;
+		mem->fractal(mem);
+	}
 }
 
 static void	key_zoom(int k, t_mem *mem)
@@ -51,9 +63,9 @@ static void	key_reset(int k, t_mem *mem)
 static void	key_color(int k, t_mem *mem)
 {
 	if (k == TOUCH_C)
-		mem->color.i++;
-	if (k == TOUCH_V && mem->color.i >= -30)
-		mem->color.i--;
+		mem->color.i += 10;
+	if (k == TOUCH_V)
+		mem->color.i -= 10;
 }
 
 int			key_hook(int k, t_mem *mem)
