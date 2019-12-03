@@ -6,7 +6,7 @@
 /*   By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+     */
 /*                                                 #+#   #+    #+    #+#      */
 /*   Created: 2018/10/09 13:22:14 by xamartin     #+#   ##    ##    #+#       */
-/*   Updated: 2018/10/10 18:30:17 by xamartin    ###    #+. /#+    ###.fr     */
+/*   Updated: 2018/10/12 13:28:53 by xamartin    ###    #+. /#+    ###.fr     */
 /*                                                         /                  */
 /*                                                        /                   */
 /* ************************************************************************** */
@@ -39,6 +39,10 @@ static t_frac		*init_frac(void)
 
 void				init(t_mem *mem)
 {
+	mem->black.r = 0;
+	mem->black.g = 0;
+	mem->black.b = 0;
+	mem->black.a = 0;
 	mem->color.r = 130;
 	mem->color.g = 35;
 	mem->color.b = 235;

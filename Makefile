@@ -6,7 +6,7 @@
 #    By: xamartin <xamartin@student.le-101.fr>      +:+   +:    +:    +:+      #
 #                                                  #+#   #+    #+    #+#       #
 #    Created: 2018/10/09 17:54:27 by xamartin     #+#   ##    ##    #+#        #
-#    Updated: 2018/10/10 18:33:41 by xamartin    ###    #+. /#+    ###.fr      #
+#    Updated: 2019/12/03 20:03:05 by xamartin    ###    #+. /#+    ###.fr      #
 #                                                          /                   #
 #                                                         /                    #
 # **************************************************************************** #
@@ -21,7 +21,7 @@ MINILIBX = minilibx_macos/libmlx.a
 NAME = fractol
 INC = includes/fractol.h
 LIB_FLAG = -framework OpenGl -framework AppKit
-CFLAGS = -Wall -Wextra -Werror -O3
+CFLAGS = -Wall -Wextra -Werror -O2
 
 
 #PATH
